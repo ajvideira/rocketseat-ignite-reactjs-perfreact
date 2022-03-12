@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { ProductItem } from './ProductItem';
 
 type SearchResultsProps = {
@@ -5,8 +6,14 @@ type SearchResultsProps = {
 };
 
 export function SearchResults({ results }: SearchResultsProps) {
+  const totalPrice = useMemo(
+    () => results.reduce((total, product) => total + product.price, 0),
+    [results]
+  );
+
   return (
     <div>
+      <h2>Total Price: {totalPrice}</h2>
       {results.map((result) => (
         <ProductItem product={result} />
       ))}
