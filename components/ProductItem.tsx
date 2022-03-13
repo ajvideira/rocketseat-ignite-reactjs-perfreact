@@ -4,8 +4,10 @@ import { AddProductToWishlistProps } from './AddProductToWishlist';
 
 import dynamic from 'next/dynamic';
 
-const AddProductToWishlist = dynamic<AddProductToWishlistProps>(() =>
-  import('./AddProductToWishlist').then((mod) => mod.AddProductToWishlist)
+const AddProductToWishlist = dynamic<AddProductToWishlistProps>(
+  () =>
+    import('./AddProductToWishlist').then((mod) => mod.AddProductToWishlist),
+  { loading: () => <span>Carregando...</span> }
 );
 
 type ProductItemProps = {
