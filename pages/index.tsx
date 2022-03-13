@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import { SearchResults } from '../components/SearchResults';
 import styles from '../styles/Home.module.css';
 
@@ -23,6 +23,10 @@ const Home: NextPage = () => {
     setResults(products);
   }
 
+  const handleAddToWishList = useCallback(async (id: number) => {
+    console.log(id);
+  }, []);
+
   return (
     <div>
       <h1>Search</h1>
@@ -36,7 +40,12 @@ const Home: NextPage = () => {
         <button type="submit">Buscar</button>
       </form>
 
-      {results && <SearchResults results={results} />}
+      {results && (
+        <SearchResults
+          results={results}
+          onAddToWishList={handleAddToWishList}
+        />
+      )}
     </div>
   );
 };
