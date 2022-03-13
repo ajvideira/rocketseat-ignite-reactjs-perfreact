@@ -44,7 +44,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h1>Search</h1>
 
       <form onSubmit={handleSearch}>
