@@ -1,18 +1,15 @@
 import { memo } from 'react';
+import { Product } from '../models';
 
 type ProductItemProps = {
-  product: {
-    id: number;
-    price: number;
-    title: string;
-  };
+  product: Product;
   onAddToWishList: (id: number) => void;
 };
 
 function ProductItemComponent({ product, onAddToWishList }: ProductItemProps) {
   return (
     <div>
-      {product.title} - <strong>{product.price}</strong>
+      {product.title} - <strong>{product.formattedPrice}</strong>
       <button onClick={() => onAddToWishList(product.id)}>
         Add to wishlist
       </button>
